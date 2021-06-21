@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="90dp"
+    android:layout_height="90dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginTop="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <ImageView
+           android:id="@+id/iv_services"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:layout_marginStart="10dp"
+           android:layout_marginTop="0dp"
+           android:padding="15dp"
+           android:src="@drawable/scooter_food"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintLeft_toRightOf="parent"
+           android:contentDescription="@string/app_name" />
+
+       <TextView
+           android:id="@+id/tv_services"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/chinese"
+           android:maxWidth="80dp"
+           android:maxLines="1"
+           app:layout_constraintTop_toBottomOf="@id/iv_services"
+           app:layout_constraintLeft_toLeftOf="@id/iv_services"
+           app:layout_constraintRight_toRightOf="@id/iv_services"
+           android:textColor="@color/myYBlack"
+           android:textStyle="bold"
+           />
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
