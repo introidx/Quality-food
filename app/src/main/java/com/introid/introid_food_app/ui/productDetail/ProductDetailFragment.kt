@@ -65,6 +65,7 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
         Glide.with(this).load(foodDetail.imageUrl).into(iv_product)
         tv_product_name.text = foodDetail.foodName
         tv_note.text = foodDetail.note
+        food_price.text = foodDetail.price.toString()
 
         tv_plus.setOnClickListener {
             qty++
