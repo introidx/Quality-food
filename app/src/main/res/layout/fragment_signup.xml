@@ -173,7 +173,7 @@
         style="@style/CustomCardViewStyleImg"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="95dp"
         android:elevation="5dp"
         app:layout_constraintHorizontal_bias="0.755"
         app:layout_constraintLeft_toLeftOf="parent"

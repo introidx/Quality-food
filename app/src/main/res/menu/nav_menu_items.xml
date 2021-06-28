@@ -12,10 +12,6 @@
         android:icon="@drawable/scooter_food"
         android:title="Orders"/>
 
-    <item
-        android:id="@+id/savedFragment"
-        android:icon="@drawable/ic_heart_solid"
-        android:title="Saved"/>
 
 
 </menu>

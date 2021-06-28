@@ -2,6 +2,9 @@ package com.introid.introid_food_app.ui.home
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.LinearLayout
@@ -45,19 +48,31 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var allMenuAdapter: AllMenuAdapter
     private lateinit var serviceAdapter: ServiceAdapter
 
+    private lateinit var viewModel : FoodViewModels
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProvider(this)[FoodViewModels::class.java]
+        toolbar.inflateMenu(R.menu.home_options_menu)
+        toolbar.setOnMenuItemClickListener {
+            onOptionsItemSelected(it)
+        }
+
+        viewModel = ViewModelProvider(this)[FoodViewModels::class.java]
 
         popularList = mutableListOf()
         recommendedList = mutableListOf()
         allItemList = mutableListOf()
 
         popularAdapter = PopularAdapter(this, popularList)
-        recommendedAdapter = RecommendedAdapter(this, recommendedList)
+        recommendedAdapter = RecommendedAdapter()
         allMenuAdapter = AllMenuAdapter(this, allItemList)
 
         firebaseDbPopular = FirebaseFirestore.getInstance()
@@ -76,9 +91,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         popular_recycler.adapter = serviceAdapter
 
 
-        viewModel.recommendedFood.observe(viewLifecycleOwner , Observer {
-            recommendedList = it
-        })
+
+        getDataFromDB()
+        recommended_recycler.adapter = recommendedAdapter
+        recommendedAdapter.notifyDataSetChanged()
 /*        val recommendedReference = firebaseDbRecommended
             .collection("recommended")
 
@@ -121,7 +137,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         }*/
 //        popular_recycler.adapter = popularAdapter
-        recommended_recycler.adapter = recommendedAdapter
+
         all_menu_recycler.adapter = allMenuAdapter
 //
 //        popularAdapter.setOnItemClickListener {
@@ -152,11 +168,40 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             )
         }
 
-        iv_go_to_cart.setOnClickListener {
+//        iv_go_to_cart.setOnClickListener {
+//            findNavController().navigate(
+//                R.id.action_homeFragment_to_checkoutPageFragment
+//            )
+//        }
+    }
+
+    private fun getDataFromDB() {
+        viewModel.recommendedFood.observe(viewLifecycleOwner, Observer {
+            recommendedAdapter.setData(it)
+            recommendedList = it
+            recommendedAdapter.notifyDataSetChanged()
+            Log.d(TAG, "onViewCreated: $recommendedList")
+        })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { when{
+        item.itemId == R.id.go_to_Checkout -> {
             findNavController().navigate(
                 R.id.action_homeFragment_to_checkoutPageFragment
             )
+            return true
+        }
+        item.itemId == R.id.search_food -> {
+            Toast.makeText(requireContext(), "Search", Toast.LENGTH_SHORT).show()
+            return true
         }
     }
-    
+        return super.onOptionsItemSelected(item)
+    }
+
 }

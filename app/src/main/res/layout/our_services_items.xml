@@ -38,7 +38,7 @@
            app:layout_constraintLeft_toLeftOf="@id/iv_services"
            app:layout_constraintRight_toRightOf="@id/iv_services"
            android:textColor="@color/myYBlack"
-           android:textStyle="bold"
+          android:fontFamily="@font/poppins"
            />
 
    </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,10 +6,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.introid.introid_food_app.R
 import com.introid.introid_food_app.adapters.CartAdapter
+import com.introid.introid_food_app.localDB.prefs.AddressManager
+import com.introid.introid_food_app.localDB.prefs.UserManager
 import com.introid.introid_food_app.models.Cart
 import com.introid.introid_food_app.util.Constants.TAG
 import com.razorpay.Checkout
@@ -28,12 +31,20 @@ class CheckoutPageFragment : Fragment(R.layout.fragment_checkout_page), PaymentR
 
     private lateinit var cartViewModel: CartViewModel
 
+    // data store
+    private lateinit var userManager: UserManager
+    private lateinit var addressManager: AddressManager
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
+        // data store
+        userManager = UserManager(requireContext())
+        addressManager = AddressManager(requireContext())
 
+        getUserDataFromDataStore()
 //        if (args != null){
 //            val address_data = args.address
 //            Toast.makeText(context, address_data.userName, Toast.LENGTH_SHORT).show()
@@ -50,7 +61,7 @@ class CheckoutPageFragment : Fragment(R.layout.fragment_checkout_page), PaymentR
             }
         })
 
-        getDataFromDb()
+        getFoodDataFromDb()
         rv_cart.adapter = cartAdapter
         cartAdapter.notifyDataSetChanged()
 
@@ -64,9 +75,24 @@ class CheckoutPageFragment : Fragment(R.layout.fragment_checkout_page), PaymentR
         }
     }
 
+    private fun getUserDataFromDataStore() {
+        userManager.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
+            if (it.isNotEmpty()) {
+                tv_deliver_to.text = "Deliver to : $it"
+            }
+        })
+
+        addressManager.userAddressFlow.asLiveData().observe(viewLifecycleOwner, {
+            if (it.isNotEmpty()) {
+                tv_location_to_deliver.text = it
+            }
+        })
+    }
+
     private fun makePayment() {
         val sampleAmount = 100
         val amount = (sampleAmount.toFloat() * 100).roundToInt()
+        Log.d(TAG, "makePayment: Sample amount $sampleAmount")
         val checkout = Checkout().apply {
             setKeyID("rzp_test_bM96CD2TdumyjO")
             setImage(R.drawable.ic_drink)
@@ -103,11 +129,11 @@ class CheckoutPageFragment : Fragment(R.layout.fragment_checkout_page), PaymentR
                 newIndividualTotalPrice
             )
             cartViewModel.updateItemToCart(newCartItem)
-            getDataFromDb()
+            getFoodDataFromDb()
             cartAdapter.notifyDataSetChanged()
         } else {
             cartViewModel.deleteItemFromCart(oldCartItem)
-            getDataFromDb()
+            getFoodDataFromDb()
             cartAdapter.notifyDataSetChanged()
 
         }
@@ -126,25 +152,35 @@ class CheckoutPageFragment : Fragment(R.layout.fragment_checkout_page), PaymentR
             newIndividualTotalPrice
         )
         cartViewModel.updateItemToCart(newCartItem)
-        getDataFromDb()
+        getFoodDataFromDb()
         cartAdapter.notifyDataSetChanged()
     }
 
-    private fun getDataFromDb() {
+    private fun getFoodDataFromDb() {
         cartViewModel.getAllCartItems.observe(viewLifecycleOwner, Observer {
             cartAdapter.setData(it)
             cartList = it
             cartAdapter.notifyDataSetChanged()
+            var totalPrice =0
+            for(items in it){
+                totalPrice += items.individualTotalPrice
+            }
+            tv_amount.text = "₹ $totalPrice"
+
         })
     }
 
     override fun onPaymentSuccess(p0: String?) {
-        Log.d(TAG, "onPaymentSuccess: $p0")
+        // upload cart data to fire store
     }
 
+    // since we are using test payment method from RazorPay it will always give error message
+    // so upload cart data to fire store in this case also.
     override fun onPaymentError(p0: Int, p1: String?) {
-        Log.d(TAG, "onPaymentError: $p0 and $p1")
+        // upload cart data to fire store
     }
+
+
 
 
 }

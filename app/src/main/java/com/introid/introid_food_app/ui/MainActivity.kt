@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         foodItemsFragment.findNavController()
             .addOnDestinationChangedListener{_ , destination , _ ->
                 when(destination.id){
-                    R.id.homeFragment, R.id.savedFragment, R.id.ordersFragment ->
+                    R.id.homeFragment, R.id.ordersFragment ->
                         bottom_app_bar.visibility = View.VISIBLE
                     else -> bottom_app_bar.visibility = View.GONE
                 }

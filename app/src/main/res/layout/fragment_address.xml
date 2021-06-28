@@ -63,7 +63,7 @@
         />
 
     <EditText
-        android:id="@+id/tv_address_from_map"
+        android:id="@+id/et_address_from_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/select_delivery_address"
@@ -99,12 +99,12 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/myOrange"
         android:text="Confirm Location &amp; Proceed"
-        app:layout_constraintTop_toBottomOf="@id/tv_address_from_map"
+        app:layout_constraintTop_toBottomOf="@id/et_address_from_map"
         app:cornerRadius="@dimen/dimen_10dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="@dimen/dimen_20dp"
         android:layout_marginStart="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_0dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
         app:layout_constraintStart_toStartOf="parent"
         />
 
