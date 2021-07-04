@@ -6,5 +6,5 @@ class Address (
         val userName : String ="",
         val phone : String ="",
         val Address : String ="",
-        val cod : Int = -1
+        val paymentRefId : String = ""
 ) : Serializable
