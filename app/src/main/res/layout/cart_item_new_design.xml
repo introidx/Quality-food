@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:layout_margin="5dp"
-    app:cardElevation="10dp">
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_cart_desc" />
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="130dp"
+            android:layout_width="110dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="25dp"
@@ -89,11 +89,11 @@
                     android:id="@+id/tv_minus"
                     android:layout_width="@dimen/dimen_30dp"
                     android:layout_height="@dimen/dimen_30dp"
-                    android:layout_marginStart="@dimen/dimen_10dp"
-                    android:gravity="center"
+                    android:layout_marginStart="@dimen/dimen_5dp"
+                    android:textAlignment="center"
                     android:text="-"
                     android:textColor="@color/myYBlack"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -103,7 +103,7 @@
                     android:id="@+id/tv_qty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="10dp"
                     android:text="1"
                     android:textColor="@color/myYBlack"
                     android:textSize="28sp"
@@ -116,11 +116,11 @@
                     android:id="@+id/tv_plus"
                     android:layout_width="@dimen/dimen_30dp"
                     android:layout_height="@dimen/dimen_30dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:textAlignment="center"
                     android:text="+"
                     android:textColor="@color/myYBlack"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/tv_qty"
                     app:layout_constraintLeft_toRightOf="@id/tv_qty"

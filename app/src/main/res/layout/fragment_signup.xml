@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.auth.signup.SignupFragment">
 
     <TextView
@@ -67,6 +68,8 @@
                 android:layout_height="70dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                app:startIconTint="@color/white"
+                app:startIconDrawable="@drawable/ic_person"
                 android:layout_marginEnd="10dp"
                 android:hint="Enter Name"
                 android:textColorHint="#fff">
@@ -89,6 +92,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
+                app:startIconTint="@color/white"
+                app:startIconDrawable="@drawable/ic_phone"
                 android:hint="Enter Phone"
                 android:textColorHint="#fff">
 
@@ -96,9 +101,9 @@
                     android:id="@+id/et_phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:inputType="phone"
                     android:minWidth="350dp"
                     android:textColor="#fff"
-                    android:inputType="phone"
                     android:textColorHint="#fff" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -111,6 +116,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
+                app:startIconTint="@color/white"
+                app:startIconDrawable="@drawable/ic_email"
                 android:hint="Enter Email"
                 android:textColorHint="#fff">
 
@@ -134,34 +141,61 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="16dp"
-
+                app:startIconTint="@color/white"
+                app:startIconDrawable="@drawable/ic_password"
                 android:hint="Enter Password"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white"
                 android:textColorHint="#fff">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="#fff"
                     android:inputType="textPassword"
+                    android:textColor="#fff"
                     android:textColorHint="#fff" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_signup"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="#fff"
-                android:text="SignUp"
-                android:textColor="#000"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:cornerRadius="40dp" />
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#fff"
+                    android:text="Sign Up"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    app:cornerRadius="40dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_marginTop="20dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/myOrange"
+                    android:indeterminateTintMode="src_atop"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
@@ -196,7 +230,7 @@
         android:text="Already have an Account?"
         android:textColor="#000"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintLeft_toLeftOf="@id/card1"
         app:layout_constraintTop_toBottomOf="@id/card1"
 

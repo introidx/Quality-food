@@ -14,7 +14,8 @@
         android:outlineAmbientShadowColor="@color/white"
         android:outlineSpotShadowColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="p">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -33,13 +34,12 @@
                 android:id="@+id/tv_deliver_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deliver to : Prakash Ranjan"
-                app:layout_constraintLeft_toRightOf="@id/iv_location"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="@dimen/dimen_10dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="Deliver to : Prakash Ranjan"
                 android:textColor="@color/black"
-                />
+                app:layout_constraintLeft_toRightOf="@id/iv_location"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_location_to_deliver"
@@ -52,8 +52,7 @@
                 android:textSize="@dimen/dimen_16sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/iv_location"
-                app:layout_constraintTop_toBottomOf="@id/tv_deliver_to"
-                 />
+                app:layout_constraintTop_toBottomOf="@id/tv_deliver_to" />
 
             <TextView
                 android:id="@+id/tv_change_location"
@@ -115,36 +114,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/iv_wallet_type"
-                        android:layout_width="@dimen/dimen_30dp"
-                        android:layout_height="@dimen/dimen_30dp"
-                        android:layout_marginStart="@dimen/dimen_10dp"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:src="@drawable/paytm"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_pay_using"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_10dp"
+                        android:layout_marginStart="@dimen/dimen_20dp"
+                        android:layout_marginTop="@dimen/dimen_10dp"
                         android:text="Pay Using"
                         android:textAllCaps="true"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_wallet_type"
-                        app:layout_constraintLeft_toRightOf="@id/iv_wallet_type"
-                        app:layout_constraintTop_toTopOf="@id/iv_wallet_type" />
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Paytm UPI"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/dimen_16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintLeft_toLeftOf="@id/iv_wallet_type"
-                        app:layout_constraintTop_toBottomOf="@id/iv_wallet_type" />
+                        />
+
+                    <ImageView
+                        android:id="@+id/iv_wallet_type"
+                        android:layout_width="@dimen/dimen_40dp"
+                        android:layout_height="@dimen/dimen_40dp"
+                        android:layout_marginStart="@dimen/dimen_10dp"
+                        android:src="@drawable/upi_color"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_pay_using"
+                        app:layout_constraintTop_toBottomOf="@id/tv_pay_using" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -158,14 +150,14 @@
                 android:padding="5dp">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
                     android:id="@+id/cv_make_payment"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/dimen_10dp"
                     android:backgroundTint="@color/myOrange"
-                    app:cardCornerRadius="@dimen/dimen_10dp"
-
-                    >
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/dimen_10dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -202,7 +194,7 @@
                             android:text="Place Order"
                             android:textColor="@color/white"
                             android:textSize="18sp"
-                            android:textStyle="bold"
+                            android:textStyle="normal"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintRight_toLeftOf="@+id/iv_go"
                             app:layout_constraintTop_toTopOf="parent" />

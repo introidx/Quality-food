@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="200dp"
     android:layout_height="365dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="10dp"
     android:layout_marginStart="5dp"
-    android:layout_marginBottom="20dp"
-    android:layout_marginEnd="5dp"
     android:layout_marginTop="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="20dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="10dp"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,76 +19,71 @@
         <ImageView
             android:id="@+id/iv_recommended"
             android:layout_width="180dp"
-            android:src="@drawable/popular1"
-            android:padding="10dp"
             android:layout_height="180dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp"
+            android:src="@drawable/popular1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_recommended"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_recommended"
-            app:layout_constraintTop_toBottomOf="@id/iv_recommended"
-            app:layout_constraintLeft_toLeftOf="@id/iv_recommended"
-            app:layout_constraintRight_toRightOf="@id/iv_recommended"
-            android:text="@string/egg_pasta"
-            android:textStyle="bold"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
+            android:text="@string/egg_pasta"
             android:textColor="@color/myYBlack"
             android:textSize="18dp"
-            android:layout_marginTop="16dp"
-            />
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/iv_recommended"
+            app:layout_constraintRight_toRightOf="@id/iv_recommended"
+            app:layout_constraintTop_toBottomOf="@id/iv_recommended" />
 
         <TextView
+            android:id="@+id/tv_rec_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_rec_description"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/spicy_chicken_salad"
             app:layout_constraintLeft_toLeftOf="@id/tv_recommended"
             app:layout_constraintRight_toRightOf="@id/tv_recommended"
-            app:layout_constraintTop_toBottomOf="@id/tv_recommended"
-            android:text="@string/spicy_chicken_salad"
-            android:fontFamily="@font/poppins"
-            android:layout_marginTop="10dp"
-            />
+            app:layout_constraintTop_toBottomOf="@id/tv_recommended" />
 
         <ImageView
             android:id="@+id/iv_hot"
             android:layout_width="25dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_fire"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:src="@drawable/ic_fire"
             app:layout_constraintLeft_toLeftOf="@id/tv_rec_description"
-            app:layout_constraintTop_toBottomOf="@id/tv_rec_description"
-            />
+            app:layout_constraintTop_toBottomOf="@id/tv_rec_description" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/iv_hot"
-            app:layout_constraintTop_toTopOf="@id/iv_hot"
-            app:layout_constraintBottom_toBottomOf="@id/iv_hot"
-            android:text="@string/_78_calories"
-            android:textSize="15sp"
-            android:textColor="@color/myOrange"
             android:layout_marginStart="15dp"
-            />
+            android:text="@string/_78_calories"
+            android:textColor="@color/myOrange"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_hot"
+            app:layout_constraintLeft_toRightOf="@id/iv_hot"
+            app:layout_constraintTop_toTopOf="@id/iv_hot" />
 
         <TextView
             android:id="@+id/tv_rs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="18dp"
+            android:text="₹"
+            android:textColor="@color/myYellow"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_hot"
-            android:text="₹"
-            android:textStyle="bold"
-            android:textColor="@color/myYellow"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="70dp"
 
             />
 
@@ -94,16 +91,14 @@
             android:id="@+id/tv_price_rec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="5dp"
             android:text="599"
+            android:textColor="@color/myYBlack"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="@color/myYBlack"
-            android:layout_marginTop="5dp"
-           app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginStart="80dp"
-            app:layout_constraintTop_toBottomOf="@id/iv_hot"
-            />
-
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_hot" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

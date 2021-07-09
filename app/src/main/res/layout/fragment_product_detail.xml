@@ -19,7 +19,8 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_arrow_back_black_24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
 
 
         <TextView
@@ -42,9 +43,10 @@
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_cart"
+            android:src="@drawable/ic_baseline_shopping_cart_24"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/myOrange" />
 
         <ImageView
             android:id="@+id/iv_product"
@@ -127,9 +129,10 @@
 
                         <TextView
                             android:id="@+id/tv_minus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_marginStart="10dp"
+                            android:textAlignment="center"
                             android:text="-"
                             android:textColor="#3F9785"
                             android:textSize="20sp"
@@ -144,7 +147,7 @@
                             android:id="@+id/tv_qty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
+                            android:layout_marginStart="@dimen/dimen_10dp"
                             android:text="1"
                             android:textColor="#3F9785"
                             android:textSize="20sp"
@@ -154,10 +157,12 @@
 
                         <TextView
                             android:id="@+id/tv_plus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_30dp"
                             android:text="+"
+                            android:layout_marginStart="@dimen/dimen_10dp"
+
+                            android:textAlignment="center"
                             android:textColor="#3F9785"
                             android:textSize="20dp"
                             android:textStyle="bold"
@@ -165,17 +170,9 @@
                             app:layout_constraintTop_toTopOf="@id/tv_qty"
 
                             />
-
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
                 </com.google.android.material.card.MaterialCardView>
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </androidx.cardview.widget.CardView>
 
 
@@ -195,8 +192,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ingredients"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_marginStart="5dp"
+            android:paddingTop="@dimen/dimen_5dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

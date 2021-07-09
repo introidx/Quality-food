@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.auth.signin.SignInFragment">
 
     <TextView
@@ -69,13 +70,15 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:hint="Enter Email"
-                android:textColorHint="#fff">
+                android:textColorHint="#fff"
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
-                    android:inputType="textEmailAddress"
                     android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
                     android:minWidth="350dp"
                     android:textColor="#fff"
                     android:textColorHint="#fff" />
@@ -91,9 +94,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="16dp"
-
                 android:hint="Enter Password"
-                android:textColorHint="#fff">
+                android:textColorHint="#fff"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white"
+                app:startIconDrawable="@drawable/ic_password"
+                app:startIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password"
@@ -108,7 +114,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
+                android:layout_marginStart="170dp"
                 android:text="Forgot Password?"
                 android:textColor="#fff"
                 android:textSize="18sp"
@@ -116,19 +122,44 @@
 
                 />
 
-            <com.google.android.material.button.MaterialButton
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:id="@+id/btn_login"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="#fff"
-                android:text="Login"
-                android:textColor="#000"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:cornerRadius="40dp" />
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#fff"
+                    android:text="Sign Up"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    app:cornerRadius="40dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_marginTop="20dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/myOrange"
+                    android:indeterminateTintMode="src_atop"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
@@ -163,7 +194,7 @@
         android:text="Don't Have an Account?"
         android:textColor="#000"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintLeft_toLeftOf="@id/card1"
         app:layout_constraintTop_toBottomOf="@id/card1"
 
